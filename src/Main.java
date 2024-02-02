@@ -19,44 +19,23 @@ public class Main {
 
             makeAllAnimalsForEat(zoo, scanner);
 
+            getNumberAllTheAnimals(zoo, scanner);
 
+            getNumberAllTheSwimmers(zoo, scanner);
 
+            makeAnimalsForSwim(zoo, scanner);
 
+            getNumberAllTheFlyers(zoo, scanner);
 
+            makeAnimalsForFly(zoo, scanner);
 
+            getNumberAllTheWalkers(zoo, scanner);
 
+            makeAnimalsForWalk(zoo, scanner);
 
+            getAllNumberOfEachAnimal(zoo, scanner);
 
-
-
-//            zoo.makeAllAnimalsEat();
-//
-//            System.out.println("Number of walkers: " + zoo.getNumberOfWalkers());
-//            System.out.println("Number of swimmers: " + zoo.getNumberOfSwimmers());
-//            System.out.println("Number of flyers: " + zoo.getNumberOfFlyers());
-//
-//            System.out.println("Making all swimmers swim:");
-//            for (Animal swimmer : zoo.getSwimmers()) {
-//                ((Swimmer) swimmer).swim();
-//            }
-//
-//            System.out.println("Making all flyers fly:");
-//            for (Animal flyer : zoo.getFlyers()) {
-//                ((Flyer) flyer).fly();
-//            }
-//
-//            System.out.println("Making all walkers walk:");
-//            for (Animal walker : zoo.getWalkers()) {
-//                ((Walker) walker).walk();
-//            }
-//
-//            System.out.println(elephant.getName() + " is a walker: " + zoo.isWalker(elephant));
-//            System.out.println(fish.getName() + " is a swimmer: " + zoo.isSwimmer(fish));
-//            System.out.println(parrot.getName() + " is a flyer: " + zoo.isFlyer(parrot));
-
-
-
-
+            checkAnimalCategory(zoo, scanner);
 
         } catch (IllegalArgumentException e) {
             System.err.println("Invalid argument: " + e.getMessage());
@@ -112,7 +91,6 @@ public class Main {
 
             System.out.print("Do you want to add another animal to the zoo? (Yes/No): ");
             addAnimalChoice = scanner.nextLine();
-            System.out.println("Now all the number of animals in the zoo: " + zoo.getNumberOfAnimals());
         }
     }
     public static Animal createAnimal(String animalName, List<String> categories) {
@@ -161,6 +139,97 @@ public class Main {
 
         if(animalEatUpChoice.equalsIgnoreCase("Yes") || animalEatUpChoice.equalsIgnoreCase("Y")){
             zoo.makeAllAnimalsEat();
+        }
+    }
+
+    private static void getNumberAllTheAnimals(Zoo zoo, Scanner scanner){
+        System.out.print("Do you want to get all the number of animals in zoo? (Y/N): ");
+        String animalsCountChoice = scanner.nextLine();
+
+        if(animalsCountChoice.equalsIgnoreCase("Yes") || animalsCountChoice.equalsIgnoreCase("Y")) {
+            System.out.println("All the number of animals in the zoo: " + zoo.getNumberOfAnimals());
+        }
+    }
+
+    private static void getNumberAllTheSwimmers(Zoo zoo, Scanner scanner){
+        System.out.print("Do you want to get all the number of swimmers in zoo? (Y/N): ");
+        String swimmerCountChoice = scanner.nextLine();
+
+        if(swimmerCountChoice.equalsIgnoreCase("Yes") || swimmerCountChoice.equalsIgnoreCase("Y")) {
+            System.out.println("All the number of swimmers in the zoo: " + zoo.getNumberOfSwimmers());
+        }
+    }
+
+    private static void makeAnimalsForSwim(Zoo zoo, Scanner scanner){
+        System.out.print("Do you want to make swim all the of swimmers in zoo? (Y/N): ");
+        String swimChoice = scanner.nextLine();
+
+        if(swimChoice.equalsIgnoreCase("Yes") || swimChoice.equalsIgnoreCase("Y")) {
+            zoo.makeSwimmersSwim();
+            System.out.println(zoo.getNumberOfSwimmers() + " number of animals make swim in the zoo");
+        }
+    }
+
+    private static void getNumberAllTheFlyers(Zoo zoo, Scanner scanner){
+        System.out.print("Do you want to get all the number of flyers in zoo? (Y/N): ");
+        String flyersCountChoice = scanner.nextLine();
+
+        if(flyersCountChoice.equalsIgnoreCase("Yes") || flyersCountChoice.equalsIgnoreCase("Y")) {
+            System.out.println("All the number of flyers in the zoo: " + zoo.getNumberOfFlyers());
+        }
+    }
+
+    private static void makeAnimalsForFly(Zoo zoo, Scanner scanner){
+        System.out.print("Do you want to make fly all the of flyers in zoo? (Y/N): ");
+        String flyChoice = scanner.nextLine();
+
+        if(flyChoice.equalsIgnoreCase("Yes") || flyChoice.equalsIgnoreCase("Y")) {
+            zoo.makeFlyersFly();
+            System.out.println(zoo.getNumberOfFlyers() + " number of animals make fly in the zoo");
+        }
+    }
+
+    private static void getNumberAllTheWalkers(Zoo zoo, Scanner scanner){
+        System.out.print("Do you want to get all the number of walkers in zoo? (Y/N): ");
+        String walkersCountChoice = scanner.nextLine();
+
+        if(walkersCountChoice.equalsIgnoreCase("Yes") || walkersCountChoice.equalsIgnoreCase("Y")) {
+            System.out.println("All the number of walkers in the zoo: " + zoo.getNumberOfWalkers());
+        }
+    }
+
+    private static void makeAnimalsForWalk(Zoo zoo, Scanner scanner){
+        System.out.print("Do you want to make walk all the of walkers in zoo? (Y/N): ");
+        String walkChoice = scanner.nextLine();
+
+        if(walkChoice.equalsIgnoreCase("Yes") || walkChoice.equalsIgnoreCase("Y")) {
+            zoo.makeWalkersWalk();
+            System.out.println(zoo.getNumberOfWalkers() + " number of animals make walk in the zoo");
+        }
+    }
+
+    private static void getAllNumberOfEachAnimal(Zoo zoo, Scanner scanner){
+        System.out.print("Do you want to get all the number of each animals in zoo? (Y/N): ");
+        String eachAnimalsCountChoice = scanner.nextLine();
+
+        if(eachAnimalsCountChoice.equalsIgnoreCase("Yes") || eachAnimalsCountChoice.equalsIgnoreCase("Y")) {
+            System.out.println("All the number of walkers in the zoo: " + zoo.getNumberOfWalkers());
+            System.out.println("All the number of flyers in the zoo: " + zoo.getNumberOfFlyers());
+            System.out.println("All the number of swimmers in the zoo: " + zoo.getNumberOfSwimmers());
+        }
+    }
+
+    private static void checkAnimalCategory(Zoo zoo, Scanner scanner){
+        System.out.print("Do you want to check if a animal is walker, flyer and swimmer for each animals in zoo? (Y/N): ");
+        String checkAnimalChoice = scanner.nextLine();
+
+        if(checkAnimalChoice.equalsIgnoreCase("Yes") || checkAnimalChoice.equalsIgnoreCase("Y")) {
+            zoo.displayAnimalNames();
+            System.out.print("Enter a name for check: ");
+            String animalNameChoice = scanner.nextLine();
+            if(animalNameChoice != null) {
+                zoo.checkCategoriesByAnimalName(animalNameChoice);
+            }
         }
     }
 }

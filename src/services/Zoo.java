@@ -71,6 +71,39 @@ public class Zoo {
         }
     }
 
+    public void makeSwimmersSwim() {
+        List<Animal> swimmers = getSwimmers();
+        for (Animal swimmer : swimmers) {
+            if (swimmer.getCategories().contains("swimmer")) {
+                ((Swimmer) swimmer).swim();
+            } else {
+                System.out.println("Unable to determine swim action for " + swimmer.getName());
+            }
+        }
+    }
+
+    public void makeFlyersFly() {
+        List<Animal> flyers = getFlyers();
+        for (Animal flyer : flyers) {
+            if (flyer.getCategories().contains("flyer")) {
+                ((Flyer) flyer).fly();
+            } else {
+                System.out.println("Unable to determine swim action for " + flyer.getName());
+            }
+        }
+    }
+
+    public void makeWalkersWalk() {
+        List<Animal> walkers = getWalkers();
+        for (Animal walker : walkers) {
+            if (walker.getCategories().contains("walker")) {
+                ((Walker) walker).walk();
+            } else {
+                System.out.println("Unable to determine swim action for " + walker.getName());
+            }
+        }
+    }
+
     public int getNumberOfAnimals() {
         return animals.size();
     }
@@ -95,6 +128,29 @@ public class Zoo {
             }
         }
         return categoryAnimals;
+    }
+
+    public void displayAnimalNames() {
+        System.out.println("Animal names in the zoo:");
+        for (Animal animal : animals) {
+            System.out.println(animal.getName());
+        }
+    }
+
+    public void checkCategoriesByAnimalName(String animalName) {
+        boolean found = false;
+
+        for (Animal animal : animals) {
+            if (animal.getName().equalsIgnoreCase(animalName)) {
+                found = true;
+                System.out.println("Categories for " + animal.getName() + ": " + animal.getCategories());
+                break;
+            }
+        }
+
+        if (!found) {
+            System.out.println("Animal with the name '" + animalName + "' not found in the zoo.");
+        }
     }
 
     public int getNumberOfCategories(String category) {
