@@ -72,34 +72,43 @@ public class Zoo {
     }
 
     public void makeSwimmersSwim() {
-        List<Animal> swimmers = getSwimmers();
-        for (Animal swimmer : swimmers) {
-            if (swimmer.getCategories().contains("swimmer")) {
-                ((Swimmer) swimmer).swim();
-            } else {
-                System.out.println("Unable to determine swim action for " + swimmer.getName());
+        for (Animal animal : animals) {
+            if (isSwimmer(animal)) {
+                if (animal instanceof MultiCategoryAnimal) {
+                    ((MultiCategoryAnimal) animal).swim();
+                } else if(animal instanceof Swimmer) {
+                    ((Swimmer) animal).swim();
+                } else {
+                    System.out.println("Unable to determine swim action for " + animal.getName());
+                }
             }
         }
     }
 
     public void makeFlyersFly() {
-        List<Animal> flyers = getFlyers();
-        for (Animal flyer : flyers) {
-            if (flyer.getCategories().contains("flyer")) {
-                ((Flyer) flyer).fly();
-            } else {
-                System.out.println("Unable to determine swim action for " + flyer.getName());
+        for (Animal animal : animals) {
+            if (isFlyer(animal)) {
+                if (animal instanceof MultiCategoryAnimal) {
+                    ((MultiCategoryAnimal) animal).fly();
+                } else if(animal instanceof Flyer) {
+                    ((Flyer) animal).fly();
+                } else {
+                    System.out.println("Unable to determine swim action for " + animal.getName());
+                }
             }
         }
     }
 
     public void makeWalkersWalk() {
-        List<Animal> walkers = getWalkers();
-        for (Animal walker : walkers) {
-            if (walker.getCategories().contains("walker")) {
-                ((Walker) walker).walk();
-            } else {
-                System.out.println("Unable to determine swim action for " + walker.getName());
+        for (Animal animal : animals) {
+            if (isWalker(animal)) {
+                if (animal instanceof MultiCategoryAnimal) {
+                    ((MultiCategoryAnimal) animal).walk();
+                } else if(animal instanceof Walker) {
+                    ((Walker) animal).walk();
+                } else {
+                    System.out.println("Unable to determine swim action for " + animal.getName());
+                }
             }
         }
     }
@@ -137,6 +146,18 @@ public class Zoo {
         }
     }
 
+    public void displaySwimmerNames() {
+        List<Animal> swimmers = getSwimmers();
+
+        if (swimmers.isEmpty()) {
+            System.out.println("No swimmer animals in the zoo.");
+        } else {
+            for (Animal swimmer : swimmers) {
+                System.out.println(swimmer.getName() + " is swimming");
+            }
+        }
+    }
+
     public void checkCategoriesByAnimalName(String animalName) {
         boolean found = false;
 
@@ -153,10 +174,6 @@ public class Zoo {
         }
     }
 
-    public int getNumberOfCategories(String category) {
-        return (int) animals.stream().filter(animal -> animal.getCategories().contains(category)).count();
-    }
-
     public int getNumberOfWalkers() {
         return getWalkers().size();
     }
@@ -170,17 +187,14 @@ public class Zoo {
     }
 
     public boolean isSwimmer(Animal animal) {
-        animal.getCategories();
-        return false;
+        return animal.getCategories().contains("swimmer");
     }
 
     public boolean isWalker(Animal animal) {
-        animal.getCategories();
-        return false;
+        return animal.getCategories().contains("walker");
     }
 
     public boolean isFlyer(Animal animal) {
-        animal.getCategories();
-        return false;
+        return animal.getCategories().contains("flyer");
     }
 }

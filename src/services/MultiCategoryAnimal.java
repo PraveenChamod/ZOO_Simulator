@@ -35,4 +35,16 @@ public class MultiCategoryAnimal implements Animal {
     public void eat() {
         System.out.println(name + " is eating.");
     }
+
+    public void swim() {
+        System.out.println(name + " is swimming.");
+    }
+
+    public void fly() {
+        System.out.println(name + " is flying.");
+    }
+
+    public void walk() {
+        System.out.println(name + " is walking.");
+    }
 }

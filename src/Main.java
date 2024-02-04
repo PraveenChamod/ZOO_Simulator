@@ -89,7 +89,7 @@ public class Main {
             Animal newAnimal = createAnimal(animalName, categories);
             zoo.addAnimal(newAnimal);
 
-            System.out.print("Do you want to add another animal to the zoo? (Yes/No): ");
+            System.out.print("Do you want to add another animal to the zoo? (Y/N): ");
             addAnimalChoice = scanner.nextLine();
         }
     }
@@ -157,6 +157,7 @@ public class Main {
 
         if(swimmerCountChoice.equalsIgnoreCase("Yes") || swimmerCountChoice.equalsIgnoreCase("Y")) {
             System.out.println("All the number of swimmers in the zoo: " + zoo.getNumberOfSwimmers());
+            zoo.displaySwimmerNames();
         }
     }
 
@@ -166,7 +167,6 @@ public class Main {
 
         if(swimChoice.equalsIgnoreCase("Yes") || swimChoice.equalsIgnoreCase("Y")) {
             zoo.makeSwimmersSwim();
-            System.out.println(zoo.getNumberOfSwimmers() + " number of animals make swim in the zoo");
         }
     }
 
@@ -185,7 +185,6 @@ public class Main {
 
         if(flyChoice.equalsIgnoreCase("Yes") || flyChoice.equalsIgnoreCase("Y")) {
             zoo.makeFlyersFly();
-            System.out.println(zoo.getNumberOfFlyers() + " number of animals make fly in the zoo");
         }
     }
 
@@ -204,7 +203,6 @@ public class Main {
 
         if(walkChoice.equalsIgnoreCase("Yes") || walkChoice.equalsIgnoreCase("Y")) {
             zoo.makeWalkersWalk();
-            System.out.println(zoo.getNumberOfWalkers() + " number of animals make walk in the zoo");
         }
     }
 
