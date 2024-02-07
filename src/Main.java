@@ -27,11 +27,11 @@ public class Main {
 
         zoo.getNumberOfAnimals();
 
-        zoo.makeSwimmersSwim();
+        zoo.makeSwimmersSwim(true);
 
-        zoo.makeFlyersFly();
+        zoo.makeFlyersFly(true);
 
-        zoo.makeWalkersWalk();
+        zoo.makeWalkersWalk(true);
 
         zoo.getNumberOfCategoriesSeparately();
 

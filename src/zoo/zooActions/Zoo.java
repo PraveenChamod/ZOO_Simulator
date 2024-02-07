@@ -41,81 +41,46 @@ public class Zoo {
         System.out.println("All the number of animals in the zoo: " + animals.size());
     }
 
-    public void makeSwimmersSwim() {
-        for (Animal animal : animals) {
-            if (identifyCategory(animal).contains("Swimmer")) {
-                ((Swimmer) animal).swim();
-            }
-        }
-    }
-
-    public void makeFlyersFly() {
-        for (Animal animal : animals) {
-            if (identifyCategory(animal).contains("Flyer")) {
-                ((Flyer) animal).fly();
-            }
-        }
-    }
-
-    public void makeWalkersWalk() {
-        for (Animal animal : animals) {
-            if (identifyCategory(animal).contains("Walker")) {
-                ((Walker) animal).walk();
-            }
-        }
-    }
-
-    public void getNumberOfCategoriesSeparately() {
-        int walkerCount = countWalkers();
-        int flyerCount = countFlyers();
-        int swimmerCount = countSwimmers();
-
-        System.out.println("Number of Walkers: " + walkerCount);
-        System.out.println("Number of Flyers: " + flyerCount);
-        System.out.println("Number of Swimmers: " + swimmerCount);
-    }
-
-    public int countWalkers() {
-        int walkerCount = 0;
-        for (Animal animal : animals) {
-            if (identifyCategory(animal).contains("Walker")) {
-                walkerCount++;
-            }
-        }
-        return walkerCount;
-    }
-
-    public int countFlyers() {
-        int flyerCount = 0;
-        for (Animal animal : animals) {
-            if (identifyCategory(animal).contains("Flyer")) {
-                flyerCount++;
-            }
-        }
-        return flyerCount;
-    }
-
-    public int countSwimmers() {
+    public int makeSwimmersSwim(boolean makeSwim) {
         int swimmerCount = 0;
         for (Animal animal : animals) {
-            if (identifyCategory(animal).contains("Swimmer")) {
+            if (animal instanceof Swimmer) {
+                if(makeSwim) { ((Swimmer) animal).swim(); }
                 swimmerCount++;
             }
         }
         return swimmerCount;
     }
 
-    public List<String> identifyCategory(Animal animal) {
-        List<String> categories = new ArrayList<>();
-        if (animal instanceof Walker) {
-            categories.add("Walker");
+    public int makeFlyersFly(boolean makeFly) {
+        int flyerCount = 0;
+        for (Animal animal : animals) {
+            if (animal instanceof Flyer) {
+                if(makeFly){ ((Flyer) animal).fly(); }
+                flyerCount++;
+            }
         }
-        if (animal instanceof Flyer) {
-            categories.add("Flyer");
+        return flyerCount;
+    }
+
+    public int makeWalkersWalk(boolean makeWalk) {
+        int walkerCount = 0;
+        for (Animal animal : animals) {
+            if (animal instanceof Walker) {
+                if(makeWalk){ ((Walker) animal).walk(); }
+                walkerCount++;
+            }
         }
-        if (animal instanceof Swimmer) {
-            categories.add("Swimmer");
-        }
-        return categories;
+        return walkerCount;
+    }
+
+    public void getNumberOfCategoriesSeparately() {
+        int walkerCount = makeWalkersWalk(false);
+        int flyerCount = makeFlyersFly(false);
+        int swimmerCount = makeSwimmersSwim(false);
+
+        System.out.println("Number of Walkers: " + walkerCount);
+        System.out.println("Number of Flyers: " + flyerCount);
+        System.out.println("Number of Swimmers: " + swimmerCount);
     }
 }
