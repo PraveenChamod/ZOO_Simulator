@@ -4,6 +4,7 @@ import zoo.animal.Animal;
 import zoo.category.Flyer;
 import zoo.category.Swimmer;
 import zoo.category.Walker;
+import zoo.enums.AnimalCategory;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -54,15 +55,15 @@ public class Zoo {
     }
 
     public List<Animal> getSwimmers(){
-        return filterByCategory(animals, "Swimmer");
+        return filterByCategory(animals, String.valueOf(AnimalCategory.SWIMMER));
     }
 
     public List<Animal> getFlyers(){
-        return filterByCategory(animals, "Flyer");
+        return filterByCategory(animals, String.valueOf(AnimalCategory.FLYER));
     }
 
     public List<Animal> getWalkers(){
-        return filterByCategory(animals, "Walker");
+        return filterByCategory(animals, String.valueOf(AnimalCategory.WALKER));
     }
 
     public void makeSwimmersSwim() {
